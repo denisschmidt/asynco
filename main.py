@@ -1,4 +1,3 @@
-
 from email import message
 import time
 from unicodedata import name
@@ -41,6 +40,7 @@ async def async_func(name: str):
     await anyio.sleep(1)
     return f"I am non-blocking func, {name}"
 
+
 def sync_func(name: str):
     time.sleep(1)
     return f"I am blocking func, {name}"
@@ -64,14 +64,14 @@ def get_urls_to_crawl() -> List[str]:
 
 async def async_main():
     result = await crawl_urls_run()
-    
+
     print('======================================\n')
 
     # asyncify🚀
     # safely executed in a "worker thread" without blocking the event loop. 🎉
     # run it on a worker thread this way allow to mix async code with blocking code more easily
     message = await asyncify(sync_func)(name="run_blocking_inside_async")
-    
+
     print("Use the main async execution. {}".format(message))
     print('\n======================================\n')
 
@@ -80,9 +80,9 @@ async def async_main():
     message = await asyncify(sync_func_II)(name="run_async_inside_blocking")
     print("Use the main async execution. {}".format(message))
 
+
 def sync_main():
     print('\n======================================\n')
-
     """
     If your program is mainly sync and you use syncify(raise_sync_error=False) that will run anyio.run().
 
