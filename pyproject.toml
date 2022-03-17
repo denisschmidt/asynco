@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "async"
+version = "0.1.0"
+description = ""
+authors = ["denisschmidt <parasolgroup25@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pytest = "^7.1.0"
+flake8 = "^4.0.1"
+anyio = "^3.5.0"
+aiohttp = "^3.8.1"
+typing-extensions = "^4.1.1"
+yapf = "^0.32.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.mypy]
+# --strict
+disallow_any_generics = true
+disallow_subclassing_any = true 
+disallow_untyped_calls = true 
+disallow_untyped_defs = true
+disallow_incomplete_defs = true 
+check_untyped_defs = true 
+disallow_untyped_decorators = true 
+no_implicit_optional = true
+warn_redundant_casts = true 
+warn_unused_ignores = true
+warn_return_any = true 
+implicit_reexport = false
+strict_equality = true
+# --strict end
+
+[[tool.mypy.overrides]]
+module = "docs_src.*"
+disallow_incomplete_defs = false
+disallow_untyped_defs = false
+disallow_untyped_calls = false 
+warn_no_return = false
